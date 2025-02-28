@@ -1,0 +1,67 @@
+{% include 'header.html' %}
+
+    <div class="card form-tag" style="width: 50%;margin:30px auto 0;">
+      <div class="card-header">Add Disease Spread </div>
+      <div class="card-body">
+        {% if messages %}
+          {% for i in messages %}
+            <div class="alert alert-success">{{i}}</div>
+          {% endfor %}
+        {% endif %}
+        <form method="post" enctype="multipart/form-data"> {% csrf_token %}
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-12">
+                <div class="">
+                  <select name="disease_name" class="form-control" style="margin-bottom:20px;">
+					<option>Select Disease</option>
+					{% for i in detail %}
+						<option value="{{i.id}}">{{i.name}}</option>
+					{% endfor %}
+				</select>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="">
+				<input type="text" name="hospital_name" class="form-control" placeholder="Hospital Name" required="required">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-12">
+                <div class="">
+                  <input type="text" name="area" class="form-control" placeholder="Area" required="required" >
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="">
+                  <input type="text" name="state" class="form-control" placeholder="State" required="required">
+                </div>
+              </div>
+			  <div class="col-md-12">
+                <div class="">
+                  <input type="text" name="count" class="form-control" required="required" placeholder="Disease Spread Count">
+                </div>
+              </div>
+			   <div class="col-md-12">
+                <div class="">
+                  <input type="text" name="cured_count" class="form-control" required="required" placeholder="Disease Cured Count">
+                </div>
+              </div>
+			  <div class="col-md-12">
+                <div class="">
+                  <input type="text" name="current_count" class="form-control" required="required" placeholder="Disease Current Count">
+                </div>
+              </div>
+            </div>
+          </div>
+         
+          <input type="submit" class="btn btn-primary btn-block" value="Add Disease Spread">
+          
+        </form>
+      </div>
+    </div>
+
+{% include 'footer.html' %}

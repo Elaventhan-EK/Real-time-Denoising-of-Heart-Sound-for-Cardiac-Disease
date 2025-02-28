@@ -1,0 +1,90 @@
+{% include 'header.html' %}
+<a href="{% url 'add_patient' %}" class="btn btn-warning" style="float:right;width:150px;margin:20px 0;"><i class="fa fa-plus"></i> Patient</a>
+<div style="clear:both;"></div>
+	<form method="get">{% csrf_token %}
+		<input type="text" name="search" class="form-control" placeholder="Search Patient Based on ID"><br>
+		<input type="submit" name="submit" class="btn btn-primary btn-block" value="Search Patient">
+	</form>
+<div class="card mb-3"  style="margin-top:20px;">
+  <div class="card-header">
+            <i class="fas fa-table"></i>
+            View Patients History</div>
+			{% if request.GET.search %}
+			<div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Sno</th>
+                    <th>Patient ID</th>
+                    <th>Patient Name</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+					<th>Image</th>
+                    <th>Option</th>
+                  </tr>
+                </thead>
+                <tbody> 
+                  {% for i in row %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.patient_id}}</td>
+					<td>{{i.patient_name.name}}</td>
+                    <td>{{i.mobile}}</td>
+                    <td>{{i.address}}</td>
+                    <td><a href="/media/{{i.image}}" target="_blank"><img src="/media/{{i.image}}" style="width:50px;height:50px;"></a></td>
+                    <td> <a href="{% url 'add_report' pk=i.patient_name_id pid=i.id %}" class="btn btn-success btn-xs"><i class="fa fa-plus"></i> Report</a>
+					 <a href="{% url 'view_report' pk=i.id %}" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> Report</a> </td>
+                    
+                      
+                  </tr>
+				  {% empty %}
+                   <tr>
+                      <td colspan="8" class="text-center bg-primary">No Patients </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+		  {% else %}
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Sno</th>
+                    <th>Patient ID</th>
+                    <th>Patient Name</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+					<th>Image</th>
+                    <th>Option</th>
+                  </tr>
+                </thead>
+                <tbody> 
+                  {% for i in detail %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.patient_id}}</td>
+					<td>{{i.patient_name.name}}</td>
+                    <td>{{i.mobile}}</td>
+                    <td>{{i.address}}</td>
+                    <td><a href="/media/{{i.image}}" target="_blank"><img src="/media/{{i.image}}" style="width:50px;height:50px;"></a></td>
+                    <td> <a href="{% url 'add_report' pk=i.patient_name_id pid=i.id %}" class="btn btn-success btn-xs"><i class="fa fa-plus"></i> Report</a>
+					 <a href="{% url 'view_report' pk=i.id %}" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> Report</a> </td>
+                    
+                      
+                  </tr>
+				  {% empty %}
+                   <tr>
+                      <td colspan="8" class="text-center bg-primary">No Patients </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+		  {% endif %}
+</div>
+{% include 'footer.html' %}

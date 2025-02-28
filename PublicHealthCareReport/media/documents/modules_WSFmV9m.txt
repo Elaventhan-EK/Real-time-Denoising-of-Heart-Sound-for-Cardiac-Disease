@@ -1,0 +1,33 @@
+Officer
+ 
+ Add Farming Details
+ Upload Videos
+ View Farmer Details and Products
+
+
+Farmer
+
+  View Category
+  Search and Download Videos
+  Ask Question to Expert
+  Get Reply to Mail
+  View Events
+
+Experts
+
+  Upload Videos
+  Receive Doubts from Farmer
+  Reply to Farmer
+  View Events
+
+Students
+
+  Receive Camp Details
+  Ask Questions to Experts
+  View Farmer and Farming Details
+
+Admin
+
+  Post Event Details
+  Upload Officer Details
+  Reports

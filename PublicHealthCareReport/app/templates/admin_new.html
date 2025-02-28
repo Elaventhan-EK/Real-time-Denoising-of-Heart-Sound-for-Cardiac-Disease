@@ -1,0 +1,39 @@
+{% include 'admin_header.html' %}
+<div class="card mb-3" style="margin-top:40px;">
+
+          <div class="card-header" >
+            <i class="fas fa-table"></i>
+            Unauthorized Disease Alert</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Sno</th>
+					 <th>Hospital Name</th>
+                    <th>Unauthorized Disease Name</th>
+                    <th>Problem</th>
+                    <th>Symtoms</th>
+					<th>Precautions</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {% for i in detail %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+					  <td>{{i.doctor_id.hospital_name}}</td>
+                      <td>{{i.disease_name}}</td>
+                      <td>{{i.problem}}</td>
+                      <td>{{i.symtoms}}</td>
+					  <td>{{i.precautions}}</td>
+					  <td>{{i.date}}</td>
+                  {% endfor %}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+</div>
+{% include 'footer.html' %}

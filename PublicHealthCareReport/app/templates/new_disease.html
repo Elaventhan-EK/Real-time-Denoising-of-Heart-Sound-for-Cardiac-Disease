@@ -1,0 +1,47 @@
+{% include 'header.html' %}
+
+    <div class="card form-tag" style="width: 50%;margin:30px auto 0;">
+      <div class="card-header">Add Unauthorized Disease Spread </div>
+      <div class="card-body">
+        {% if messages %}
+          {% for i in messages %}
+            <div class="alert alert-success">{{i}}</div>
+          {% endfor %}
+        {% endif %}
+        <form method="post" enctype="multipart/form-data"> {% csrf_token %}
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-12">
+                <div class="">
+				<input type="text" name="disease_name" class="form-control" placeholder="Unauthorized Disease" required="required">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-12">
+                <div class="">
+                  <textarea name="problem" class="form-control" placeholder="Problem" required="required" ></textarea>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="">
+                  <textarea  name="symtoms" class="form-control" placeholder="Symtoms" required="required"></textarea>
+                </div>
+              </div>
+			  <div class="col-md-12">
+                <div class="">
+                  <textarea name="precautions" class="form-control" required="required" placeholder="Precautions"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+          <input type="submit" class="btn btn-primary btn-block" value="Add Unauthorized Disease Spread">
+          
+        </form>
+      </div>
+    </div>
+
+{% include 'footer.html' %}

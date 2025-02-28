@@ -1,0 +1,53 @@
+{% include 'pharmacy_header.html' %}
+<div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            View Prescription</div>
+             {% if messages %}
+              {% for i in messages %}
+                <div class="alert alert-success">{{i}}</div>
+              {% endfor %}
+            {% endif %}
+            {{request.session.ph_id}}
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Sno</th>
+                    <th>Customer Name</th>
+                    <th>Doctor Number</th>
+                    <th>Customer Number</th>
+                    <th>Prescription</th>
+                    <th>Option</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in view_details %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.customer_id.name}}</td>
+                    <td>{{i.hospital_id.doctor_name}}</td>
+                    <td>{{i.customer_id.phone_number}}</td>
+                    <td><a class="btn btn-info btn-xs" target="_blank" href="/media/documents/{{ i.online_id.prescription }}"><i class="fa fa-download"></i>    Prescription</a></td>
+                    <td>
+                      {% if i.tablet_price == "" %}
+                      <a class="btn btn-primary btn-xs" href="{% url 'update_amount' pk=i.id %}"><i class="fa fa-paper-plane"></i>    Amount</a>
+                      {% else %}
+                      <a class="btn btn-primary btn-xs" href="{% url 'update_amount' pk=i.id %}"><i class="fa fa-eye"></i>    Amount</a>
+                      {% endif %}
+                    </td>
+                      
+                    
+                  </tr>
+                  {% empty %}
+                   <tr>
+                      <td colspan="8" class="text-center bg-primary">No Prescription </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+</div>
+{% include 'footer.html' %}

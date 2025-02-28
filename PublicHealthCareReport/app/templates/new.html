@@ -1,0 +1,39 @@
+{% include 'header.html' %}
+<a href="{% url 'new_disease' %}" class="btn btn-success" style="float:right;"><i class="fa fa-plus"></i> Add Unauthorized Disease</a>
+<div style="clear:both;"></div>
+<div class="card mb-3" style="margin-top:40px;">
+
+          <div class="card-header" >
+            <i class="fas fa-table"></i>
+            Unauthorized Disease Details</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Sno</th>
+                    <th>Unauthorized Disease Name</th>
+                    <th>Problem</th>
+                    <th>Symtoms</th>
+					<th>Precautions</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {% for i in detail %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{i.disease_name}}</td>
+                      <td>{{i.problem}}</td>
+                      <td>{{i.symtoms}}</td>
+					  <td>{{i.precautions}}</td>
+					  <td>{{i.date}}</td>
+                  {% endfor %}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+</div>
+{% include 'footer.html' %}

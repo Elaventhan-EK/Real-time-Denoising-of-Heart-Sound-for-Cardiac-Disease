@@ -1,0 +1,48 @@
+{% include 'header.html' %}
+
+    <div class="card form-tag" style="width: 50%;margin:30px auto 0;">
+      <div class="card-header">Add Visiting Hour</div>
+      <div class="card-body">
+        {% if messages %}
+          {% for i in messages %}
+            <div class="alert alert-success">{{i}}</div>
+          {% endfor %}
+        {% endif %}
+        <form method="post"> {% csrf_token %}
+          <input type="hidden" value="{{request.session.doc_id}}" name="hospital_id">
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-12">
+                <div class="">
+                  <input type="text" name="vweekday" class="form-control" placeholder="Visting Hour Mon-Sat Morning" required="required" autofocus="autofocus">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="">
+                  <input type="text" name="vweekend" class="form-control" placeholder="Visting Hour Sun Morning" required="required">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-12">
+                <div class="">
+                  <input type="text" name="onweekday" class="form-control" placeholder=" Visting Hour Mon-Sat Evening" required="required" autofocus="autofocus">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="">
+                  <input type="text" name="onweekend" class="form-control" placeholder=" Visting Hour Sun Evening" required="required">
+                </div>
+              </div>
+            </div>
+          </div>
+         
+          <input type="submit" class="btn btn-primary btn-block" value="Add Visiting Hour">
+          
+        </form>
+      </div>
+    </div>
+
+{% include 'footer.html' %}

@@ -1,0 +1,52 @@
+{% include 'header.html' %}
+
+    <div class="card form-tag" style="width: 50%;margin:30px auto 0;">
+      <div class="card-header">Add Patient Detail</div>
+      <div class="card-body">
+        {% if messages %}
+          {% for i in messages %}
+            <div class="alert alert-success">{{i}}</div>
+          {% endfor %}
+        {% endif %}
+        <form method="post" enctype="multipart/form-data"> {% csrf_token %}
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-12">
+                <div class="">
+				<select name="patient_name" class="form-control" style="margin-bottom:20px;">
+					<option value="">Select Patient</option>
+					{% for i in pat_id %}
+						<option value="{{i.id}}">{{i.username}}</option>
+					{% endfor %}
+				</select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-12">
+                <div class="">
+                  <input type="text" name="mobile" class="form-control" placeholder="Mobile Number" required="required" >
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="">
+                  <input type="file" name="img" class="form-control" placeholder="Image" required="required">
+                </div>
+              </div>
+			  <div class="col-md-12">
+                <div class="">
+                  <textarea name="address" class="form-control" placeholder="Address" required="required"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+          <input type="submit" class="btn btn-primary btn-block" value="Add Patient Details">
+          
+        </form>
+      </div>
+    </div>
+
+{% include 'footer.html' %}

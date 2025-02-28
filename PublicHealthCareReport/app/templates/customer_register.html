@@ -1,0 +1,79 @@
+{% include 'db_header.html' %}
+
+
+  <div class="container">
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Customer Register Here</div>
+      <div class="card-body">
+        {% if messages %}
+          {% for i in messages %}
+            <div class="alert alert-success">{{i}}</div>
+          {% endfor %}
+        {% endif %}
+        <form method="post">{% csrf_token %}
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <div class="">
+                  <input type="text" name="cname" class="form-control" placeholder="Customer Name" required="required" autofocus="autofocus">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="">
+                  <input type="email" name="mail" class="form-control" placeholder="Email Id" required="required">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                  <div class="">
+                    <input type="text" name="num" class="form-control" placeholder="Phone Number" required="required">
+                  </div>
+                </div>
+                 <div class="col-md-6">
+                  <div class="">
+                    <input type="text" name="uname" class="form-control" placeholder="Username" required="required">
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <div class="">
+                  <input type="password" name="psw" class="form-control" placeholder="Password" required="required">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="">
+                   <input type="text" name="country" class="form-control" placeholder="Country" required="required">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <div class="">
+                  <input type="text" name="state" class="form-control" placeholder="State" required="required">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="">
+                  <input type="text" name="city" class="form-control" placeholder="City" required="required">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+              <textarea name="addr" rows="3" class="form-control" placeholder="Address" ></textarea>
+          </div>
+          <input type="submit" class="btn btn-primary btn-block" value="Register Customer">
+        </form>
+      </div>
+    </div>
+  </div>
+</body>

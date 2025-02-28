@@ -1,0 +1,33 @@
+{% include 'db_header.html' %}
+
+  <div class="container">
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Customer Login Here</div>
+      <div class="card-body">
+         {% if messages %}
+          {% for i in messages %}
+            <div class="alert alert-danger">{{i}}</div>
+          {% endfor %}
+        {% endif %}
+        <form method="post" action="{% url 'customer_login' %}">{% csrf_token %}
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <div class="">
+                  <input type="text" name="uname" class="form-control" placeholder="Username" required="required" autofocus="autofocus">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="">
+                  <input type="password" name="psw" class="form-control" placeholder="Password" required="required">
+                </div>
+              </div>
+            </div>
+          </div>
+          <input type="submit" class="btn btn-primary btn-block" value="Customer Login">
+
+        </form>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,53 @@
+{% if request.session.customer %}
+{% include 'customer_header.html' %}
+{% else %}
+{% include 'header.html' %}
+{% endif %}
+	<form method="post">{% csrf_token %}
+		<select name="search" class="form-control">
+		<option value="">Select Disease</option>
+		{% for i in detail %}
+			<option value="{{i.id}}">{{i.name}}</option>
+		{% endfor %}
+		</select><br>
+		<input type="submit" name="submit" class="btn btn-primary btn-block" value="Search Disease Spread">
+	</form>
+<div class="card mb-3"  style="margin-top:20px;">
+  <div class="card-header">
+            <i class="fas fa-table"></i>
+            View Disease Spread</div>
+			<div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Sno</th>
+                    <th>Disease Name</th>
+                    <th>Area</th>
+                    <th>No of Affected Count</th>
+                    <th>Cured Count</th>
+					<th>No of Currently Affected Count</th>
+                  </tr>
+                </thead>
+                <tbody> 
+                  {% for i in row %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.disease_name.name}}</td>
+					<td>{{i.area}}</td>
+                    <td>{{i.count}}</td>
+                    <td>{{i.cured_count}}</td>
+					<td>{{i.current_count}}</td>
+                  </tr>
+				  {% empty %}
+                   <tr>
+                      <td colspan="8" class="text-center bg-primary">No Disease Spread </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+		  
+</div>
+{% include 'footer.html' %}

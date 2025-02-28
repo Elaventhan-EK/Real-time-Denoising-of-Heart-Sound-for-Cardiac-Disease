@@ -1,0 +1,41 @@
+.white a
+{
+	color: #FFF !important;
+}
+.col-md-12 input.form-control
+{
+	margin-bottom: 20px !important;
+}
+.form-tag .form-group
+{
+	margin-bottom: 0 !important;
+}
+textarea.form-control {
+    height: auto;
+    margin-bottom: 20px !important;
+}
+.bg-darks, footer.sticky-footer {
+    background-color: #117a8b !important;
+}
+footer.sticky-footer .copyright
+{
+	color: #FFF;
+}
+.sidebar li.nav-item:hover
+{
+	 background-color: #FF5733 !important;
+}
+.sidebar li.nav-item:hover a
+{
+	color: #FFF !important;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #FF5733 !important;
+    border-color: #FF5733 !important;
+}
+.btn-primary:hover
+{
+	background-color: #F03108 !important;
+    border-color: #F03108 !important;
+}

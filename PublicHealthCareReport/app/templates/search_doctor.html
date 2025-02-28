@@ -1,0 +1,32 @@
+{% include 'customer_header.html' %}
+        <form method="get">
+          <input type="text" name="search" placeholder="Search City..." class="form-control"><br>
+
+          <input type="submit" class="btn btn-primary btn-block" value="Search City">
+          
+        </form><br>
+        {% for i in a %}
+	        <div class="col-md-5 black">
+	        	<h4>Hospital Name : <span class="space">{{i.hospital_id}}</span></h4>
+	        	<h4> Doctor Name : <span class="space">{{i.hospital_id.doctor_name}}</span></h4>
+	        	<h4>Visting Hours Morning </h4>
+	        	<p>Mon-Sat : {{i.visiting_hour_weekdays}}</p>
+	        	<p>Sun : {{i.visiting_hour_weekend}}</p>
+	        	<h4>Visting Hours Evening</h4>
+	        	<p>Mon-Sat : {{i.visiting_hour_online_weekdays}}</p>
+	        	<p>Sun : {{i.visiting_hour_online_weekend}}</p>
+	        	<h5 style="margin-bottom: 15px;">Specialist : {{i.hospital_id.specialist}} </h5>
+	        	
+	        	{% if i.hospital_id.doctor_type == 'pvt' %}
+	        		<h5 style="color: #FF5733; font-size: 16px;margin-bottom: 15px;">Doctor Type : Private Doctor</h5>
+	        	{% else %}
+	        		<h5 style="color: #FF5733; font-size: 16px;margin-bottom: 15px;">Doctor Type : Government Doctor</h5>
+	        	{% endif %}
+	        	<a href="{% url 'appoint' %}?id={{i.hospital_id_id}}" class="btn btn-info">Book an Appointment</a>
+	        </div>
+	        {% empty %}
+   		{% if request.GET.search %}<h1 style="font-size: 23px;text-align: center;margin-top:100px;">No Doctors Found.....</h1>{% endif %}
+        {% endfor %}
+     
+
+{% include 'footer.html' %}

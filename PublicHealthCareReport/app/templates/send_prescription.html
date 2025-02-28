@@ -1,0 +1,34 @@
+{% include 'header.html' %}
+    <div class="card form-tag" style="width: 50%;margin:30px auto 0;">
+      <div class="card-header">Send Prescription</div>
+      <div class="card-body">
+        {% if messages %}
+          {% for i in messages %}
+            <div class="alert alert-success">{{i}}</div>
+          {% endfor %}
+        {% endif %}
+        <form method="post" enctype="multipart/form-data">{% csrf_token %}
+          {% for i in view_details %}
+          <div class="form-group">
+            <div class="form-row">
+              <label>Send Prescription To Customer</label>
+              <div class="col-md-12">
+                <div class="">
+                  <input type="file" name="img" required="required"> 
+                  {% if i.prescription != '' %}
+                  <a href="/media/documents/{{i.prescription}}" target="_blank"><img src="/media/documents/{{i.prescription}}" width="200"></a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        <br>
+          <input type="submit" class="btn btn-primary btn-block" value="Send Prescription">
+        
+          
+        </form>
+      </div>
+    </div>
+   
+{% include 'footer.html' %}

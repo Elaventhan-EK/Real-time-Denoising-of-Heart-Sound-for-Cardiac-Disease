@@ -1,0 +1,36 @@
+
+{% include 'header.html' %}
+<div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            Visiting Hours Details</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Sno</th>
+                    <th> Mon-Sat Morning</th>
+                    <th>Sun Morning</th>
+                    <th>Mon-Sat Evening</th>
+                    <th>Sun Evening</th>
+                    <th>Option</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in visiting_hours %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{i.visiting_hour_weekdays}}</td>
+                      <td>{{i.visiting_hour_weekend}}</td>
+                      <td>{{i.visiting_hour_online_weekdays}}</td>
+                      <td>{{i.visiting_hour_online_weekend}}</td>
+                      <td><a href="{% url 'edit_visiting' pk=i.id %}" class="btn btn-success btn-xs">Edit</a> <a href="{% url 'delete_visiting' pk=i.id %}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure Want Delete?')">Delete</a></td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+</div>
+{% include 'footer.html' %}

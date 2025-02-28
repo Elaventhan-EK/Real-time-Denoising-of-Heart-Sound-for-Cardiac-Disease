@@ -1,0 +1,53 @@
+{% include 'admin_header.html' %}
+
+	<form method="post" id="post-form">{% csrf_token %}
+		<select name="cat_id" class="form-control" style="margin-bottom:20px;">
+			<option>Select Hospital</option>
+			{% for i in row %}
+				<option value="{{i.0}}">{{i.0}}</option>
+			{% endfor %}
+		</select>
+		<input type="submit" name="submit" class="btn btn-primary btn-block" value="Analysis Disease">
+	</form>
+<div id="subject_mark">
+<div class="card mb-3"  style="margin-top:20px;">
+  <div class="card-header">
+            <i class="fas fa-table"></i>
+            View Hospital Wise Disease Analysis</div>
+			<div class="card-body">
+				  <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Sno</th>
+                    <th>Disease Name</th>
+                    <th>Hospital Name</th>
+                    <th>Area</th>
+                    <th>State</th>
+					<th>Total Count</th>
+					<th>Cured Count</th>
+					<th>Current Count</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {% for i in detail %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{i.0}}</td>
+                      <td>{{i.1}}</td>
+                      <td>{{i.3}}</td>
+					  <td>{{i.2}}</td>
+					  <td>{{i.4}}</td>
+					  <td>{{i.5}}</td>
+					  <td>{{i.6}}</td>
+                  {% endfor %}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            </div>
+          </div>
+
+</div>
+{% include 'footer.html' %}

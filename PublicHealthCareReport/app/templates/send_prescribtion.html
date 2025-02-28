@@ -1,0 +1,30 @@
+{% include 'header.html' %}
+    <div class="card form-tag" style="width: 50%;margin:30px auto 0;">
+      <div class="card-header">Online Consulting</div>
+      <div class="card-body">
+        {% if messages %}
+          {% for i in messages %}
+            <div class="alert alert-success">{{i}}</div>
+          {% endfor %}
+        {% endif %}
+        <form method="post">{% csrf_token %}
+          {% for i in view_details %}
+          <div class="form-group">
+            <div class="form-row">
+              <label>Send Feedback To Customer</label>
+              <div class="col-md-12">
+                <div class="">
+                  <textarea class="form-control" placeholder="Message" name="con" >{{i.feedback}}</textarea> 
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+          <input type="submit" class="btn btn-primary btn-block" value="Send Feedback">
+        
+          
+        </form>
+      </div>
+    </div>
+   
+{% include 'footer.html' %}

@@ -1,0 +1,34 @@
+{% include 'header.html' %}
+    <div class="card form-tag" style="width: 50%;margin:30px auto 0;">
+      <div class="card-header">Send Prescription</div>
+      <div class="card-body">
+        {% if messages %}
+          {% for i in messages %}
+            <div class="alert alert-success">{{i}}</div>
+          {% endfor %}
+        {% endif %}
+        <form method="post">{% csrf_token %}
+          <div class="form-group">
+            <div class="form-row">
+              <label>Send Prescription To Pharmacy</label>
+              <div class="col-md-12">
+                <div class="">
+                  <select name="pharmacy" class="form-control">
+                    <option value="">Select Pharmacy</option>
+                    {% for i in pharmacy %}
+                        <option value="{{i.id}}">{{i.pharmacy_name}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        <br>
+          <input type="submit" class="btn btn-primary btn-block" value="Send Prescription">
+        
+          
+        </form>
+      </div>
+    </div>
+   
+{% include 'footer.html' %}

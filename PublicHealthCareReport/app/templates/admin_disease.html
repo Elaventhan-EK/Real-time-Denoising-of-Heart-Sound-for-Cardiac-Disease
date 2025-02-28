@@ -1,0 +1,42 @@
+{% include 'admin_header.html' %}
+<div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            Disease Spread Details</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Sno</th>
+                    <th>Disease Name</th>
+					 <th>Doctor Name</th>
+                    <th>Hospital Name</th>
+                    <th>Area</th>
+                    <th>State</th>
+					<th>Total Count</th>
+					<th>Cured Count</th>
+					<th>Current Count</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {% for i in detail %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{i.disease_name.name}}</td>
+					   <td>{{i.doctor_id.doctor_name}}</td>
+                      <td>{{i.hospital_name}}</td>
+                      <td>{{i.area}}</td>
+					  <td>{{i.state}}</td>
+					  <td>{{i.count}}</td>
+					  <td>{{i.cured_count}}</td>
+					  <td>{{i.current_count}}</td>
+                  {% endfor %}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+</div>
+{% include 'footer.html' %}

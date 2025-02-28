@@ -1,0 +1,15 @@
+{% include 'header.html' %}
+    
+	<form method="get" id="post-form" action="{% url 'chart' %}">{% csrf_token %}
+		<select name="cat_id" class="form-control" style="margin-bottom:20px;">
+			<option>Select Disease</option>
+			{% for i in detail %}
+				<option value="{{i.id}}">{{i.name}}</option>
+			{% endfor %}
+		</select>
+		<input type="submit" name="submit" class="btn btn-primary btn-block" value="Analysis Disease">
+	</form>
+
+
+
+{% include 'footer.html' %}

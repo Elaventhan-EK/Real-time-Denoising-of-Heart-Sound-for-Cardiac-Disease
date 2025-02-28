@@ -1,0 +1,35 @@
+{% include 'header.html' %}
+
+    <div class="card form-tag" style="width: 50%;margin:30px auto 0;">
+      <div class="card-header">Send Consulting Amount</div>
+      <div class="card-body">
+        {% if messages %}
+          {% for i in messages %}
+            <div class="alert alert-success">{{i}}</div>
+          {% endfor %}
+        {% endif %}
+        <form method="post"> {% csrf_token %}
+
+            <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-12">
+                <div class="">
+                  <input type="text" name="amout" class="form-control" placeholder="Enter the Consulting Fee" required="required" autofocus="autofocus" >
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="">
+                  <input type="text" name="status" class="form-control" placeholder="Status of the Payment" required="required"  >
+                  
+                </div>
+              </div>
+            </div>
+          </div><br>
+         
+          <input type="submit" class="btn btn-primary btn-block" value="Update Amount">
+         
+        </form>
+      </div>
+    </div>
+
+{% include 'footer.html' %}

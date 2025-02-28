@@ -1,0 +1,48 @@
+{% include 'header.html' %}
+
+    <div class="card form-tag" style="width: 50%;margin:30px auto 0;">
+      <div class="card-header">Update Visiting Hour</div>
+      <div class="card-body">
+        {% if messages %}
+          {% for i in messages %}
+            <div class="alert alert-success">{{i}}</div>
+          {% endfor %}
+        {% endif %}
+        <form method="post"> {% csrf_token %}
+          {% for i in Visiting %}
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-12">
+                <div class="">
+                  <input type="text" name="vweekday" class="form-control" placeholder="Visting Hour Mon-Sat" required="required" autofocus="autofocus" value="{{i.visiting_hour_weekdays}}">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="">
+                  <input type="text" name="vweekend" class="form-control" placeholder="Visting Hour Sun" required="required" value="{{i.visiting_hour_weekend}}">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-12">
+                <div class="">
+                  <input type="text" name="onweekday" class="form-control" placeholder="Online Visting Hour Mon-Sat" required="required" autofocus="autofocus" value="{{i.visiting_hour_online_weekdays}}">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="">
+                  <input type="text" name="onweekend" class="form-control" placeholder="Online Visting Hour Sun" required="required" value="{{i.visiting_hour_online_weekend}}">
+                </div>
+              </div>
+            </div>
+          </div>
+         
+          <input type="submit" class="btn btn-primary btn-block" value="Update Visiting Hour">
+          {% endfor %}
+        </form>
+      </div>
+    </div>
+
+{% include 'footer.html' %}

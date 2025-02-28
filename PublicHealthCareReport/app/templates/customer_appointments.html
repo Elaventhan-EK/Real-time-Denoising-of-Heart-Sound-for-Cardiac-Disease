@@ -1,0 +1,50 @@
+{% include 'customer_header.html' %}
+<div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            View Appointments</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Sno</th>
+                    <th>Hospital Name</th>
+                    <th>Doctor Name</th>
+                    <th>Patient Name</th>
+                    <th>Phone Number</th>
+                    <th>Problem</th>
+                    <th>Visiting Date</th>
+                    <th>Visiting Time</th>
+                    <th>Option</th>
+                  </tr>
+                </thead>
+                <tbody> 
+                  {% for i in appointment %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.hospital_id.hospital_name}}</td>
+                    <td>{{i.hospital_id.doctor_name}}</td>
+                    <td>{{i.pet_name}}</td>
+                    <td>{{i.hospital_id.mobile}}</td>
+                    <td>{{i.problem}}</td>
+                    <td>{{i.visiting_date}}</td>
+                    <td>{{i.visiting_time}}</td> 
+                    <td>
+                      {% if i.status == '' %}
+                        <span style="color:orange;font-weight:bold;">Waiting for an Approval</span>
+					{% elif i.status == 'book' %}
+						<span style="color:green;font-weight:bold;">Booked</span>
+                     {% elif i.status == 'cancel' %}
+                        <span style="color:red;font-weight:bold;">Cancelled</span>
+                      {% endif %}
+                      
+                      
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+</div>
+{% include 'footer.html' %}

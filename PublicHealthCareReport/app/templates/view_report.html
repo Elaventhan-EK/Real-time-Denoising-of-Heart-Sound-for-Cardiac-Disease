@@ -1,0 +1,98 @@
+{% include 'header.html' %}
+	<form method="get">{% csrf_token %}
+		<input type="date" name="search" class="form-control" ><br>
+		<input type="submit" name="submit" class="btn btn-primary btn-block" value="Search By Date">
+	</form>
+<div class="card mb-3"  style="margin-top:20px;">
+  <div class="card-header">
+            <i class="fas fa-table"></i>
+            View Patients History</div>
+			{% if request.GET.search %}
+			<div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                 <tr>
+                    <th>Sno</th>
+                    <th>Patient ID</th>
+                    <th>Doctor Name</th>
+					<th>Phone Number</th>
+                    <th>Disease</th>
+                    <th>Problem</th>
+					<th>Visited Date</th>
+					<th>Follow up Date</th>
+					<th>Report</th>
+                    <th>Prescription</th>
+                  </tr>
+                </thead>
+                <tbody> 
+                  {% for i in row %}
+                    <tr>
+                    <td>{{forloop.counter}}</td>
+					<td>{{i.Pid.patient_id}}</td>
+                    <td>{{i.doctor_id.doctor_name}}</td>
+                    <td>{{i.doctor_id.mobile}}</td>
+                    <td>{{i.disease_name}}</td>
+					<td>{{i.problem}}</td>
+					<td>{{i.visiting_date}}</td>
+					<td>{{i.follow_up_date}}</td>
+                    <td><a href="/media/{{i.report}}" target="_blank" class="btn btn-info btn-xs"><i class="fa fa-download"></i> Report</a></td>
+                    <td><a href="/media/{{i.prescription}}" target="_blank" class="btn btn-danger btn-xs"><i class="fa fa-download"></i> Prescription</a></td>
+                    
+                      
+                  </tr>
+				  {% empty %}
+                   <tr>
+                      <td colspan="8" class="text-center bg-primary">No Patients </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+		  {% else %}
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Sno</th>
+                    <th>Patient ID</th>
+                    <th>Doctor Name</th>
+					<th>Phone Number</th>
+                    <th>Disease</th>
+                    <th>Problem</th>
+					<th>Visited Date</th>
+					<th>Follow up Date</th>
+					<th>Report</th>
+                    <th>Prescription</th>
+                  </tr>
+                </thead>
+                <tbody> 
+                  {% for i in detail %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+					<td>{{i.Pid.patient_id}}</td>
+                    <td>{{i.doctor_id.doctor_name}}</td>
+                    <td>{{i.doctor_id.mobile}}</td>
+                    <td>{{i.disease_name}}</td>
+					<td>{{i.problem}}</td>
+					<td>{{i.visiting_date}}</td>
+					<td>{{i.follow_up_date}}</td>
+                    <td><a href="/media/{{i.report}}" target="_blank" class="btn btn-info btn-xs"><i class="fa fa-download"></i> Report</a></td>
+                    <td><a href="/media/{{i.prescription}}" target="_blank" class="btn btn-danger btn-xs"><i class="fa fa-download"></i> Prescription</a></td>
+                    
+                      
+                  </tr>
+				  {% empty %}
+                   <tr>
+                      <td colspan="8" class="text-center bg-primary">No Patients </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+		  {% endif %}
+</div>
+{% include 'footer.html' %}
